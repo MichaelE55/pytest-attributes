@@ -18,9 +18,9 @@ Features
 Installation
 ------------
 
-```bash
+``
 pip install pytest-attributes
-```
+``
 
 
 Usage
@@ -28,14 +28,14 @@ Usage
 
 First, import attributes from pytest_attributes:
 
-```python
+``
 from pytest_attributes import attributes
-```
+``
 
 
 Now you can add attributes to each of your tests using the @attributes marker. Like so:
 
-```python
+``
 @attributes(
     step = 1,
     action = "Test the functionality of feature X",
@@ -43,7 +43,7 @@ Now you can add attributes to each of your tests using the @attributes marker. L
     )
 def test_functionality():
     assert True
-```
+``
 
 In the above example, we created our attributes marker, and then added whatever parameters we wanted inside and set those values.
 Now those values are associated with this specific test called "test_functionality".
