@@ -18,9 +18,10 @@ Features
 Installation
 ------------
 
-``
-pip install pytest-attributes
-``
+.. code-block:: python
+   :linenos:
+
+    pip install pytest-attributes
 
 
 Usage
@@ -28,25 +29,25 @@ Usage
 
 First, import attributes from pytest_attributes:
 
-``
-from pytest_attributes import attributes
-``
-:: python
+.. code-block:: python
+   :linenos:
 
-    def greet(name):
-        return f"Hello, {name}!"
+    from pytest_attributes import attributes
+
 
 Now you can add attributes to each of your tests using the @attributes marker. Like so:
 
-```
-@attributes(
-    step = 1,
-    action = "Test the functionality of feature X",
-    expected = "Feature X works successfully"
-    )
-def test_functionality():
-    assert True
-```
+.. code-block:: python
+   :linenos:
+
+    @attributes(
+        step = 1,
+        action = "Test the functionality of feature X",
+        expected = "Feature X works successfully"
+        )
+    def test_functionality():
+        assert True
+
 
 In the above example, we created our attributes marker, and then added whatever parameters we wanted inside and set those values.
 Now those values are associated with this specific test called "test_functionality".
@@ -54,27 +55,29 @@ Now those values are associated with this specific test called "test_functionali
 
 We can now reference these attributes by using the provided keyterm 'attr':
 
-```python
-@attributes(
-    step = 1,
-    action = "Test the functionality of feature X",
-    expected = "Feature X works successfully"
-    )
-def test_functionality(attr):
-    print(attr.step)
-    print(attr.action)
-    print(attr.expected)
-    assert True
-```
+.. code-block:: python
+   :linenos:
 
-The above example prints the following:
+    @attributes(
+        step = 1,
+        action = "Test the functionality of feature X",
+        expected = "Feature X works successfully"
+        )
+    def test_functionality(attr):
+        print(attr.step)
+        print(attr.action)
+        print(attr.expected)
+        assert True
 
-```bash
-test.py 1
-Test the functionality of feature X
-Feature X works successfully
-.
-```
+The above example produces the following result:
+
+.. code-block:: bash
+   :linenos:
+
+    test.py 1
+    Test the functionality of feature X
+    Feature X works successfully
+    .
 
 
 More importantly, however, we can use attr to get these attributes from within fixtures!
@@ -83,11 +86,12 @@ This opens up the door to many possibilities, such as determining what to do wit
 The process of doing this is extremely simple.
 Simply provide attr as an argument to the desired fixture and you can access its attributes. Like so:
 
-```python
-@pytest.fixture(autouse=True)
-def my_fixture(attr):
-    print(attr.action)
-```
+.. code-block:: python
+   :linenos:
+
+    @pytest.fixture(autouse=True)
+    def my_fixture(attr):
+        print(attr.action)
 
 
 Example Code
@@ -95,32 +99,34 @@ Example Code
 
 my_test.py
 
-```python
-import pytest
-from pytest_attributes import attributes
+.. code-block:: python
+   :linenos:
 
-@attributes(
-    step = 1,
-    action = "Test the functionality of feature X",
-    expected = "Feature X works successfully"
-    )
-def test_functionality(attr):
-    print(attr.step)
-    print(attr.action)
-    print(attr.expected)
-    assert True
-```
+    import pytest
+    from pytest_attributes import attributes
+    
+    @attributes(
+        step = 1,
+        action = "Test the functionality of feature X",
+        expected = "Feature X works successfully"
+        )
+    def test_functionality(attr):
+        print(attr.step)
+        print(attr.action)
+        print(attr.expected)
+        assert True
 
 
 conftest.py
 
-```python
-import pytest
+.. code-block:: python
+   :linenos:
 
-@pytest.fixture(autouse=True)
-def my_fixture(attr):
-    print(attr.action)
-```
+    import pytest
+    
+    @pytest.fixture(autouse=True)
+    def my_fixture(attr):
+        print(attr.action)
 
 
 Contributing
