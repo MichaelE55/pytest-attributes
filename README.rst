@@ -31,11 +31,14 @@ First, import attributes from pytest_attributes:
 ``
 from pytest_attributes import attributes
 ``
+::
 
+    def greet(name):
+        return f"Hello, {name}!"
 
 Now you can add attributes to each of your tests using the @attributes marker. Like so:
 
-```python
+```
 @attributes(
     step = 1,
     action = "Test the functionality of feature X",
