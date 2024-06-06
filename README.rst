@@ -31,7 +31,7 @@ First, import attributes from pytest_attributes:
 ``
 from pytest_attributes import attributes
 ``
-::
+.. code-block:: python
 
     def greet(name):
         return f"Hello, {name}!"
